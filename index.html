@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>トリックダイスシム</title>
+		<link rel="icon" href="">
+		<script src="js.js"></script>
+	</head>
+	<body>
+		<h1>トリックダイスシム</h1>
+		<button id="startGame" onclick="aTurn();">ゲーム開始</button>
+		<button id="dicing" onclick="dices();" disabled>振る！</button>
+		<br>
+		ダイスをキープ<input type="checkbox" id="d1_k" disabled>
+		<input type="checkbox" id="d2_k" disabled>
+		<input type="checkbox" id="d3_k" disabled>
+		<input type="checkbox" id="d4_k" disabled>
+		<input type="checkbox" id="d5_k" disabled>
+		<br><br>
+		<div id="gameArea"></div>
+		<button id="buttonSet" onclick="cmbSet();" disabled>役を登録</button>
+		<span id="whoseTurn"></span>
+
+		<table>
+			<tr>
+				<th></th>
+				<th>ルポ</th>
+				<th>ティグ</th>
+				<th></th>
+				<th>参考</th>
+			</tr>
+			<tr>
+				<th>デュース</th>
+				<th id="2_pl1">-</th>
+				<th id="2_pl2">-</th>
+				<th><input type="radio" value="2" name="pl_check"></th>
+				<th id="2_now"></th>
+			</tr>
+			<tr>
+				<th>トレイ</th>
+				<th id="3_pl1">-</th>
+				<th id="3_pl2">-</th>
+				<th><input type="radio" value="3" name="pl_check"></th>
+				<th id="3_now"></th>
+			</tr>
+			<tr>
+				<th>フォー</th>
+				<th id="4_pl1">-</th>
+				<th id="4_pl2">-</th>
+				<th><input type="radio" value="4" name="pl_check"></th>
+				<th id="4_now"></th>
+			</tr>
+			<tr>
+				<th>ファイブ</th>
+				<th id="5_pl1">-</th>
+				<th id="5_pl2">-</th>
+				<th><input type="radio" value="5" name="pl_check"></th>
+				<th id="5_now"></th>
+			</tr>
+			<tr>
+				<th>シックス</th>
+				<th id="6_pl1">-</th>
+				<th id="6_pl2">-</th>
+				<th><input type="radio" value="6" name="pl_check"></th>
+				<th id="6_now"></th>
+			</tr>
+			<tr>
+				<th colspan="5">1~6の合計が55点以上の場合、ボーナ<br>ス40点</th>
+			</tr>
+			<tr>
+				<th>フルハウス</th>
+				<th id="7_pl1">-</th>
+				<th id="7_pl2">-</th>
+				<th><input type="radio" value="7" name="pl_check"></th>
+				<th id="7_now"></th>
+			</tr>
+			<tr>
+				<th>ﾗｰｼﾞｽﾄﾚｰﾄ</th>
+				<th id="8_pl1">-</th>
+				<th id="8_pl2">-</th>
+				<th><input type="radio" value="8" name="pl_check"></th>
+				<th id="8_now"></th>
+			</tr>
+			<tr>
+				<th>ヨット</th>
+				<th id="9_pl1">-</th>
+				<th id="9_pl2">-</th>
+				<th><input type="radio" value="9" name="pl_check"></th>
+				<th id="9_now"></th>
+			</tr>
+			<tr>
+				<th>合計得点</th>
+				<th id="sum_pl1"></th>
+				<th id="sum_pl2"></th>
+				<th></th>
+				<th>/</th>
+			</tr>
+		</table>
+		
+	</body>
+	<style>
+		div{
+			font-size: 32px;
+			text-align: center;
+			background-color: #c0c0c0;
+			overflow: auto;
+			height: 72px;
+			width: 256px;
+		}
+		table{
+			border: dashed 2px;
+			border-collapse: collapse;
+		}
+		tr, th{
+			border: dashed 2px;
+		}
+	</style>
+</html>
