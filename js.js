@@ -9,6 +9,7 @@ let added = null;
 let alls = [];
 let pl_name = ["pl1", "pl2"];
 let pl_sum = [0, 0];
+let diceChara =[null,"⚀","⚁","⚂","⚃","⚄","⚅"];
 
 let sys = {
     turnLeft: 8,
@@ -25,6 +26,42 @@ let keep = {
 }
 
 let point = [0,0,0,0,0,0,0,0];
+
+function game(){
+    document.getElementById("startGame").disabled = true;
+    turnLeft = 8;
+    playerNum = 1;
+    aTurn();
+}
+function aTurn(){
+
+    document.getElementById("dicing").disabled = false;
+    document.getElementById("buttonSet").disabled = true;
+    sys.TryLeft = 3;
+    if(sys.turnLeft <= 0){
+        document.getElementById("whoseTurn").innerHTML = "の勝ち！"
+    }
+    sys.turnLeft -=1;
+    if(sys.playerNum === 0){
+        sys.playerNum = 1;
+        document.getElementById("whoseTurn").innerHTML = "ティグのターン"
+    } else{
+        sys.playerNum = 0;
+        document.getElementById("whoseTurn").innerHTML = "ルポのターン"
+    }
+   
+
+    for(let i=0; i<=7; i+=1){
+        if(document.getElementById(`${i+2}_${pl_name[sys.playerNum]}`).innerHTML !== "-"){
+            document.getElementsByName("pl_check")[i].disabled = true;
+            document.getElementsByName("pl_check")[i].checked = false;
+        }
+    }
+    for(let i=1; i<=5; i+=1){
+        document.getElementById(`d${i}_k`).checked  = false;
+        document.getElementById(`d${i}_k`).disabled  = true;
+    }
+}
 
 function aDice(){
     let me = Math.floor(Math.random() * 6) + 1;
@@ -79,36 +116,12 @@ function dices(){
     } else{
         yaku = ""
     }
-    document.getElementById("gameArea").innerHTML = `${d1} ${d2} ${d3} ${d4} ${d5}<br>${yaku}`; 
+    document.getElementById("gameArea").innerHTML = `${diceChara[d1]} ${diceChara[d2]} ${diceChara[d3]} ${diceChara[d4]} ${diceChara[d5]}<br>${yaku}`; 
     combis();
     document.getElementById("buttonSet").disabled = false;
 }
 
-function aTurn(){
 
-    document.getElementById("dicing").disabled = false;
-    document.getElementById("buttonSet").disabled = true;
-    sys.TryLeft = 3;
-    if(sys.playerNum === 0){
-        sys.playerNum = 1;
-        document.getElementById("whoseTurn").innerHTML = "ティグのターン"
-    } else{
-        sys.playerNum = 0;
-        document.getElementById("whoseTurn").innerHTML = "ルポのターン"
-    }
-   
-
-    for(let i=0; i<=7; i+=1){
-        if(document.getElementById(`${i+2}_${pl_name[sys.playerNum]}`).innerHTML !== "-"){
-            document.getElementsByName("pl_check")[i].disabled = true;
-            document.getElementsByName("pl_check")[i].checked = false;
-        }
-    }
-    for(let i=1; i<=5; i+=1){
-        document.getElementById(`d${i}_k`).checked  = false;
-        document.getElementById(`d${i}_k`).disabled  = true;
-    }
-}
 function combis() {
     point = [0,0,0,0,0,0,0,0];
     for(let i=2; i<=6; i+=1){
